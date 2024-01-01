@@ -74,7 +74,7 @@ h1 {
       }
     }
     .control {
-      display: felx;
+      display: flex;
       justify-content: center;
       align-items: center;
       margin-top: 30px auto;
@@ -95,7 +95,6 @@ h1 {
       }
       .hint {
         background-color: #009688;
-        flex: 1;
         width: fit-content;
       }
       button:disabled {
@@ -132,6 +131,24 @@ h1 {
         font-weight: bold;
       }
     }
+  }
+}
+
+.message {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  height: 250px;
+  span {
+    font-weight: bold;
+    display: block;
+    font-size: 50px;
+    color: var(--primary-color);
+    text-transform: capitalize;
+    margin-top: 10px;
+  }
+  p {
+    margin-top: 15px;
   }
 }
 

@@ -26,6 +26,8 @@ const words = [
 
 wordToGuess = words[Math.floor(Math.random() * words.length)].toLowerCase();
 
+const messageArea = document.querySelector(".message")!;
+
 const generateInput = () => {
   const inputsContainer = document.querySelector(".inputs")!;
 
@@ -79,12 +81,12 @@ const generateInput = () => {
   });
 };
 
-const guessButton = document.querySelector(".check");
+const guessButton = document.querySelector<HTMLButtonElement>(".check")!;
 guessButton?.addEventListener("click", handleGuesses);
-
+console.log(wordToGuess);
 function handleGuesses() {
   let successGuess = true;
-  console.log(wordToGuess);
+
   for (let i = 1; i <= numberOfLetters; ++i) {
     const input = document.querySelector<HTMLInputElement>(
       `#guess-${currentTry}-letter-${i}`
@@ -103,6 +105,19 @@ function handleGuesses() {
       input.classList.add("no");
       successGuess = false;
     }
+  }
+
+  // Check If All Letters Are Correct
+  if (successGuess) {
+    messageArea.innerHTML = `You Win, The Word Is <span>${wordToGuess}</span>`;
+
+    let allTries = document.querySelectorAll(".inputs > div");
+    allTries.forEach((tryDiv) => tryDiv.classList.add("disabled-inputs"));
+
+    // Disable guess button
+    guessButton.disabled = true;
+  } else {
+    console.log("You Lose");
   }
 }
 
