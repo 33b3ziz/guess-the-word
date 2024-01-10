@@ -206,6 +206,4 @@ function handleBackspace(e: KeyboardEvent) {
 
 document.addEventListener("keydown", handleBackspace);
 
-window.onload = () => {
-  generateInput();
-};
+window.addEventListener("load", generateInput);
